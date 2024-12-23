@@ -12,9 +12,9 @@ const badgeVariants = cva(
           "border-[#22C55E]/40 px-[14px] w-[100px] py-[6px] bg-[#22C55E]/20 text-[#22C55E] hover:bg-primary/80",
         secondary:
           "border-transparent px-[14px] w-[100px] py-[6px] bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        pending: "border-transparent text-white px-[14px] w-[100px] py-[6px] bg-yellow-500",
+        pending: "border-transparent text-[#D97706] px-[14px] w-[100px] py-[6px] bg-[#F59E0B66]/40",
         destructive:
-          "border-transparent px-[14px] w-[100px] py-[6px] bg-destructive text-destructive-foreground hover:bg-destructive/80",
+          "border-transparent px-[14px] w-[100px] py-[6px] bg-destructive/40 border-[#F43F5E]/40 text-[#F43F5E] hover:bg-destructive/80",
         outline: "text-foreground",
       },
     },
