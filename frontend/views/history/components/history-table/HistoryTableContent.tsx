@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-// import { Search } from "../Search";
 import { StatsRow } from "../Stats";
 import { columns } from './columns';
 import { DataTable } from './data-table';

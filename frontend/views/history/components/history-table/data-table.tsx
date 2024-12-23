@@ -27,6 +27,7 @@ import { Button } from '@/components/ui/button';
 import { RefreshCcw } from 'lucide-react';
 
 export interface Gift {
+  id: number;
   recipient: string;
   details: string;
   status: string;
@@ -68,7 +69,7 @@ export function DataTable<TData extends Gift, TValue>({
     <div className="flex flex-col gap-4">
       <div className="mt-4 flex items-center">
         <Input
-          placeholder="Search by recipient or gift status"
+          placeholder="Search by recipient"
           value={
             (table.getColumn('recipient')?.getFilterValue() as string) ?? ''
           }
