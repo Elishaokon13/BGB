@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HistoryTable } from "./components/HistoryTable";
+import { HistoryTable } from "./components/history-table/HistoryTableContent";
 
 export function HistoryView() {
   return (
