@@ -43,12 +43,12 @@ export default function BackgroundLinesDemo() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
-              <Link
+              {/* <Link
                 href="/create"
                 className="text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
               >
                 Create
-              </Link>
+              </Link> */}
               {/* <Link href="/gallery" className="text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
                 Gallery
               </Link> */}
@@ -115,13 +115,13 @@ export default function BackgroundLinesDemo() {
             flex flex-col items-center justify-center space-y-8 pt-20
           `}
           >
-            <Link
+            {/* <Link
               href="/create"
               className="text-blue-700 dark:text-blue-400 text-xl"
               onClick={() => setIsMenuOpen(false)}
             >
               Create
-            </Link>
+            </Link> */}
             <ConnectWallet className="bg-blue-500 hover:bg-blue-400">
               <Avatar className="h-6 w-6" />
               <Name />
