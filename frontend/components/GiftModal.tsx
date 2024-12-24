@@ -41,7 +41,7 @@ function GiftModal() {
 
                 </div>
                 <CardTitle className="text-white ">
-                    <h2 className="text-xl font-medium">
+                    <h2 className="text-xl font-medium my-4">
                         {shareLink
                             ? "Send This To Your Friend To Claim"
                             : "Send Gift To A Friend"}
@@ -117,7 +117,7 @@ function GiftModal() {
                     <>
                         <div className="w-full p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg flex justify-between items-center">
                             <div className="flex items-center gap-2 flex-1">
-                                <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs">T</div>
+                                <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-xs">$</div>
                                 <Input
                                     type="text"
                                     value={amount}
