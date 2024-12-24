@@ -10,7 +10,7 @@ const history = [
   {
     id: 1,
     recipient: "Alice Smith",
-    details: "100 USDT + Summer NFT + Unique Item",
+    details: "100 USDC + Summer NFT + Unique Item",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
@@ -18,7 +18,7 @@ const history = [
   {
     id: 2,
     recipient: "Bob Johnson",
-    details: "75 USDT + Winter NFT + Special Edition",
+    details: "75 USDC + Winter NFT + Special Edition",
     status: "Pending",
     date: 1734968758,
     actions: "View",
@@ -34,7 +34,7 @@ const history = [
   {
     id: 4,
     recipient: "Diana Prince",
-    details: "50 USDT + Spring NFT + Limited Edition",
+    details: "50 USDC + Spring NFT + Limited Edition",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
@@ -42,7 +42,7 @@ const history = [
   {
     id: 5,
     recipient: "Ethan Hunt",
-    details: "30 USDT + Fall NFT + Exclusive Item",
+    details: "30 USDC + Fall NFT + Exclusive Item",
     status: "Failed",
     date: 1734968758,
     actions: "View",
@@ -50,7 +50,7 @@ const history = [
   {
     id: 6,
     recipient: "Fiona Gallagher",
-    details: "20 USDT + Holiday NFT + Collectible",
+    details: "20 USDC + Holiday NFT + Collectible",
     status: "Failed",
     date: 1734968758,
     actions: "View",
@@ -58,7 +58,7 @@ const history = [
   {
     id: 7,
     recipient: "George Clooney",
-    details: "10 USDT + Anniversary NFT + Special Gift",
+    details: "10 USDC + Anniversary NFT + Special Gift",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
@@ -66,7 +66,7 @@ const history = [
   {
     id: 8,
     recipient: "Hannah Montana",
-    details: "5 USDT + Birthday NFT + Surprise",
+    details: "5 USDC + Birthday NFT + Surprise",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
@@ -74,7 +74,7 @@ const history = [
   {
     id: 9,
     recipient: "Ian Malcolm",
-    details: "15 USDT + Thank You NFT + Gratitude Gift",
+    details: "15 USDC + Thank You NFT + Gratitude Gift",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
@@ -82,7 +82,7 @@ const history = [
   {
     id: 10,
     recipient: "Jack Sparrow",
-    details: "25 USDT + Pirate NFT + Treasure",
+    details: "25 USDC + Pirate NFT + Treasure",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
@@ -90,7 +90,7 @@ const history = [
   {
     id: 11,
     recipient: "Katherine Johnson",
-    details: "40 USDT + Space NFT + Stellar Gift",
+    details: "40 USDC + Space NFT + Stellar Gift",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
