@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
+import Gift from "../public/gif/animated-gift.gif";
+import Image from "next/image";
 
 //this is where the receiver need to have a wallet address before they are allowed to claim the package
 const Claim = () => {
@@ -58,7 +60,7 @@ const Claim = () => {
       }
 
       // Success - you might want to redirect or show a success message
-      router.push("/success"); // Create a success page or modify as needed
+      router.push("/welcome"); // Create a success page or modify as needed
     } catch (error) {
       setError(
         error instanceof Error ? error.message : "Failed to claim package"
@@ -68,23 +70,23 @@ const Claim = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-muted-foreground">Loading package details...</p>
-        </div>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex min-h-screen items-center justify-center">
+  //       <div className="flex flex-col items-center gap-4">
+  //         <p className="text-muted-foreground">Loading package details...</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  if (error) {
-    return (
-      <div className="flex min-h-screen items-center justify-center p-4">
-        <p>{error}</p>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="flex min-h-screen items-center justify-center p-4">
+  //       <p>{error}</p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
@@ -92,17 +94,30 @@ const Claim = () => {
         <div className="flex flex-col gap-4">
           <div>
             <div className="flex flex-col gap-4">
-              <p className="text-sm text-muted-foreground">
-                Your package is ready to be claimed. Click the button below to
-                proceed.
-              </p>
               <button
                 onClick={handleClaim}
                 disabled={isClaiming}
-                className="w-full"
+                className="w-full relative"
               >
-                {isClaiming ? <>Claiming...</> : "Claim Package"}
+                {isClaiming ? (
+                  "Claiming"
+                ) : (
+                  <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 max-w-xl object-cover z-[-1]"
+                >
+                  <source src="/videos/animated-gift.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                )}
               </button>
+
+              <p className="text-3xl text-black font-[500] text-muted-foreground">
+                Click to Claim Your Package
+              </p>
             </div>
           </div>
         </div>
