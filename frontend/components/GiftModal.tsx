@@ -18,7 +18,7 @@ import { useAccount } from "wagmi";
 function GiftModal() {
     const [amount, setAmount] = useState<string>("");
     const [shareLink, setShareLink] = useState<string>("");
-    const { address } = useAccount();
+    const { address, isConnected } = useAccount();
 
     const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
@@ -29,18 +29,19 @@ function GiftModal() {
 
     const handleSavePackage = async () => {
         const data = await savePackage(address as string);
-        setShareLink(data.shareLink);
+        console.log(data);
+        setShareLink(window.location.origin + "/claim/" + data.savedPackageId);
     }
 
     return (
         <Card className="relative backdrop-filter bg-white/10 bg-opacity-60 backdrop-blur-lg border border-white/10 rounded-lg shadow-lg w-full max-w-md mx-auto mt-8">
             <CardHeader>
                 <div className="flex flex-col items-center">
-                    <Image src="/base_img.png" alt="Base Logo" width={350} height={350} className="w-full" />
+                    <video src="/video/base_animate.mp4" autoPlay loop muted className="w-full" />
 
                 </div>
                 <CardTitle className="text-white ">
-                    <h2 className="text-xl font-medium">
+                    <h2 className="text-xl font-medium my-4">
                         {shareLink
                             ? "Send This To Your Friend To Claim"
                             : "Send Gift To A Friend"}
@@ -113,20 +114,26 @@ function GiftModal() {
                         </div>
                     </div>
                 ) : (
-                    <div className="w-full p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg flex justify-between items-center">
-                        <div className="flex items-center gap-2 flex-1">
-                            <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs">T</div>
-                            <Input
-                                type="text"
-                                value={amount}
-                                onChange={handleAmountChange}
-                                className="bg-transparent border-none text-white p-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-lg"
-                                placeholder="0.00"
-                            />
+                    <>
+                        <div className="w-full p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg flex justify-between items-center">
+                            <div className="flex items-center gap-2 flex-1">
+                                <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-xs">$</div>
+                                <Input
+                                    type="text"
+                                    value={amount}
+                                    onChange={handleAmountChange}
+                                    className="bg-transparent border-none text-white p-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-lg"
+                                    placeholder="0.00"
+                                />
+                            </div>
+                            <span className="text-white">USDC</span>
                         </div>
-                        <span className="text-white">USDC</span>
-                    </div>
-
+                        {!isConnected && (
+                            <p className="text-red-400 text-sm mt-2 text-center">
+                                Please connect your wallet to send a gift
+                            </p>
+                        )}
+                    </>
                 )}
             </CardContent>
 
@@ -140,9 +147,12 @@ function GiftModal() {
                             </a>
                         </p>
                     ) : (
-
                         <>
-                            <Button className="w-full rounded-full text-white bg-rounded-full bg-[#2455FF] hover:bg-[#2455FF]/80" onClick={async () => await handleSavePackage()}>
+                            <Button
+                                className="w-full rounded-full text-white bg-rounded-full bg-[#2455FF] hover:bg-[#2455FF]/80 disabled:opacity-50 disabled:cursor-not-allowed"
+                                onClick={async () => await handleSavePackage()}
+                                disabled={!isConnected}
+                            >
                                 Send Gift
                             </Button>
                             <Button variant="link" className="text-sm text-gray-300 underline mt-2">
