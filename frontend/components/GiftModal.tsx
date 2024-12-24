@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { savePackage } from "@/lib/utils";
+import { useRouter } from 'next/navigation'
 import Image from "next/image";
 // import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 function GiftModal() {
@@ -14,6 +15,12 @@ function GiftModal() {
     const [message, setMessage] = useState<string>("");
     const [shareLink, setShareLink] = useState<string>("");
     const { address, isConnected } = useAccount();
+    const router = useRouter();
+
+    useEffect(() => {
+        sessionStorage.removeItem('package_link');
+    }, []);
+    
 
     const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
@@ -26,6 +33,8 @@ function GiftModal() {
         const data = await savePackage(address as string);
         console.log(data);
         setShareLink(window.location.origin + "/claim/" + data.savedPackageId);
+        sessionStorage.setItem("package_link", shareLink)
+        router.push('/created')
     }
 
     return (
