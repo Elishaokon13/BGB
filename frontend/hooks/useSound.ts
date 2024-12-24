@@ -47,8 +47,11 @@ export const useSound = () => {
   );
 
   const playBell = useCallback(() => {
-    playSound(bellSound, { volume: 0.5 });
-  }, [bellSound, playSound]);
+    if (!bellSound || !isMusicPlaying) return;
+    bellSound.currentTime = 0;
+    bellSound.volume = 0.1;
+    bellSound.play();
+  }, [bellSound, isMusicPlaying]);
 
   const toggleMusic = useCallback(() => {
     if (!hasInteracted) {
@@ -60,7 +63,7 @@ export const useSound = () => {
     if (isMusicPlaying) {
       bgMusic.pause();
     } else {
-      playSound(bgMusic, { volume: 0.3, loop: true });
+      playSound(bgMusic, { volume: 0.05, loop: true });
     }
   }, [bgMusic, isMusicPlaying, playSound, hasInteracted]);
 
