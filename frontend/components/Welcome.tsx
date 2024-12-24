@@ -1,7 +1,6 @@
 import React from "react";
 import USDC from "../public/usdc.svg";
 import BASENAME from "../public/basename.svg";
-import CUBE from "../public/cube.svg";
 import Image from "next/image";
 
 export const Welcome = () => {
@@ -25,23 +24,7 @@ export const Welcome = () => {
         </div>
         <div className="flex flex-col gap-9 text-center">
           <div className="border-2 w-fit h-fit border-gray-400 rounded-lg p-3">
-            <Image
-              src={CUBE}
-              alt="cube"
-              height={100}
-              width={100}
-              className="w-[290px] h-[340px] rounded-lg"
-            />
-            {/* <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 max-w-xl object-cover z-[-1]"
-            >
-              <source src="/video/cubes193d7f1f9ab1cfeeb3506c30ed72391c.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video> */}
+            <video src="/video/cubes193d7f1f9ab1cfeeb3506c30ed72391c.mp4" autoPlay loop muted className="w-[300px] h-[340px] rounded-lg" />
           </div>
           <div>
             <p className="font-semibold text-3xl">Holiday Collectible</p>
@@ -66,7 +49,7 @@ export const Welcome = () => {
       <div className="text-center flex flex-col gap-2 max-w-sm mb-7 mx-auto">
         <h1 className="text-[23.19px] font-bold">Welcome to Base! 🎉</h1>
         <p>Congratulations on Receiving Your First Holiday Gift!</p>
-        <p className="mt-7">
+        <p className="mt-3">
           You&apos;ve Just Joined The Base Ecosystem, a Community-Driven Platform
           Where Your Yourney Into The World of Decentralized Finance Begins.
         </p>

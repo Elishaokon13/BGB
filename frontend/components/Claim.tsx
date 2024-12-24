@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
+import { ArrowUpWideNarrow, CircleArrowUp } from "lucide-react";
 
 //this is where the receiver need to have a wallet address before they are allowed to claim the package
 const Claim = () => {
@@ -87,35 +88,34 @@ const Claim = () => {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
+    <div className="flex min-h-screen justify-center p-4">
       <div className="w-full max-w-md">
         <div className="flex flex-col gap-4">
           <div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col">
               <button
                 onClick={handleClaim}
                 disabled={isClaiming}
                 className="w-full relative"
               >
                 {isClaiming ? (
-                  "Claiming"
+                  <h1 className="animate-pulse">Claiming</h1>
                 ) : (
-                  <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 max-w-xl object-cover z-[-1]"
-                >
-                  <source src="/videos/animated-gift.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+               <div className="relative">
+
+                 <img
+                   src="/video/gift.gif"
+                   alt="Gift Animation"
+                   className="w-full"
+                 />
+              <ArrowUpWideNarrow className="animate-ping mx-auto absolute bottom-7 left-[50%]" />
+               </div>
                 )}
               </button>
-
-              <p className="text-3xl text-black font-[500] text-muted-foreground">
+              <p className="text-3xl text-center font-[500]">
                 Click to Claim Your Package
               </p>
+              <CircleArrowUp className="mx-auto mt-7" />
             </div>
           </div>
         </div>
