@@ -1,22 +1,17 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { savePackage } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { useState } from "react";
 import { useAccount } from "wagmi";
 
 function GiftModal() {
     const [amount, setAmount] = useState<string>("");
+    const [message, setMessage] = useState<string>("");
     const [shareLink, setShareLink] = useState<string>("");
     const { address, isConnected } = useAccount();
 
@@ -34,136 +29,137 @@ function GiftModal() {
     }
 
     return (
-        <Card className="relative backdrop-filter bg-white/10 bg-opacity-60 backdrop-blur-lg border border-white/10 rounded-lg shadow-lg w-full max-w-md mx-auto mt-8">
-            <CardHeader>
-                <div className="flex flex-col items-center">
-                    <video src="/video/base_animate.mp4" autoPlay loop muted className="w-full" />
-
-                </div>
-                <CardTitle className="text-white ">
-                    <h2 className="text-xl font-medium my-4">
-                        {shareLink
-                            ? "Send This To Your Friend To Claim"
-                            : "Send Gift To A Friend"}
-                    </h2>
-                </CardTitle>
-            </CardHeader>
-
-            <CardContent>
-                {shareLink ? (
-                    <div className="flex flex-col items-center text-center">
-                        <Input
-                            value={shareLink}
-                            readOnly
-                            className="w-full text-center bg-white/10 text-white border border-white/30 rounded-lg mb-4"
-                        />
-                        <div className="flex gap-4 justify-center mb-4">
-                            <p className="text-white text-lg">Share on</p>
-                            <Link
-                                href="https://www.instagram.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Image
-                                    src="/instagram.png" // Path to your Instagram logo in the public folder
-                                    alt="Share on Instagram"
-                                    width={24}
-                                    height={24}
-                                    className="hover:opacity-80"
-                                />
-                            </Link>
-                            <Link
-                                href="https://www.x.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Image
-                                    src="/x.png"
-                                    alt="Share on X"
-                                    width={24}
-                                    height={24}
-                                    className="hover:opacity-80"
-                                />
-                            </Link>
-                            <Link
-                                href="https://www.whatsapp.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Image
-                                    src="/whatsapp.png"
-                                    alt="Share on Whatsapp"
-                                    width={24}
-                                    height={24}
-                                    className="hover:opacity-80"
-                                />
-                            </Link>
-                            <Link
-                                href="https://www.facebook.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Image
-                                    src="/facebook.png"
-                                    alt="Share on Facebook"
-                                    width={24}
-                                    height={24}
-                                    className="hover:opacity-80"
-                                />
-                            </Link>
-                        </div>
+        <div className="h-screen flex flex-col bg-white relative overflow-hidden">
+            {/* Snowflakes */}
+            <div className="absolute inset-0 pointer-events-none">
+                {[...Array(12)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute text-blue-700 animate-[float_5s_ease-in-out_infinite]"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            fontSize: `${12 + Math.random() * 24}px`,
+                            animationDelay: `${Math.random() * 5}s`,
+                        }}
+                    >
+                        ❄
                     </div>
-                ) : (
-                    <>
-                        <div className="w-full p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg flex justify-between items-center">
-                            <div className="flex items-center gap-2 flex-1">
-                                <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-xs">$</div>
+                ))}
+            </div>
+
+            {/* Main Content */}
+            <main className="flex-1 container mx-auto px-4 mb-10 flex items-center justify-center">
+                <div className="w-full max-w-md">
+                    {shareLink ? (
+                        <div className="space-y-4">
+                            <div className="text-center">
+                                <h1 className="text-2xl font-medium">Share Gift Link</h1>
+                            </div>
+                            <div className="relative">
                                 <Input
-                                    type="text"
-                                    value={amount}
-                                    onChange={handleAmountChange}
-                                    className="bg-transparent border-none text-white p-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-lg"
-                                    placeholder="0.00"
+                                    value={shareLink}
+                                    readOnly
+                                    className="pr-10 text-center"
+                                />
+                                <button
+                                    onClick={() => navigator.clipboard.writeText(shareLink)}
+                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 hover:bg-gray-100 rounded-md transition-colors"
+                                >
+                                    <svg className="w-4 h-4 text-gray-500" />
+                                </button>
+                            </div>
+                            <div className="flex items-center justify-center gap-6">
+                                <span className="text-sm text-gray-600">Share via</span>
+                                {/* Social share buttons */}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="space-y-4">
+                            <div className="text-center">
+                                <h1 className="text-2xl font-cursive inline-flex items-center gap-2">
+                                    Send
+                                    <Image
+                                        src="/redgift.png"
+                                        alt="Gift"
+                                        width={100}
+                                        height={70}
+                                    />
+                                    to a friend
+                                </h1>
+                            </div>
+
+                            <div className="relative w-full aspect-video">
+                                <video
+                                    src="/video/base_animate.mp4"
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="w-full h-full object-cover rounded-xl"
                                 />
                             </div>
-                            <span className="text-white">USDC</span>
-                        </div>
-                        {!isConnected && (
-                            <p className="text-red-400 text-sm mt-2 text-center">
-                                Please connect your wallet to send a gift
-                            </p>
-                        )}
-                    </>
-                )}
-            </CardContent>
 
-            <CardFooter>
-                <div className="text-center w-full">
-                    {shareLink ? (
-                        <p className="text-sm text-gray-300">
-                            Need help?{" "}
-                            <a href="mailto:bdb.base@base.org" className="underline">
-                                bdb.base@base.org
-                            </a>
-                        </p>
-                    ) : (
-                        <>
-                            <Button
-                                className="w-full rounded-full text-white bg-rounded-full bg-[#2455FF] hover:bg-[#2455FF]/80 disabled:opacity-50 disabled:cursor-not-allowed"
-                                onClick={async () => await handleSavePackage()}
-                                disabled={!isConnected}
-                            >
-                                Send Gift
-                            </Button>
-                            <Button variant="link" className="text-sm text-gray-300 underline mt-2">
-                                Learn More
-                            </Button>
-                        </>
+                            <div className="space-y-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Enter amount to send
+                                    </label>
+                                    <div className="relative">
+                                        <div className="absolute left-3 top-1/2 -translate-y-1/2">
+                                           <Image src="/usdc.svg" width={20} height={20} alt=""/>
+                                        </div>
+                                        <Input
+                                            type="text"
+                                            value={amount}
+                                            onChange={handleAmountChange}
+                                            placeholder="0.00"
+                                            className="pl-10"
+                                        />
+                                        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-medium">
+                                            USDC
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Add a nice message
+                                    </label>
+                                    <Textarea
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                        placeholder="Write heartfelt message here"
+                                        className="h-[80px] resize-none"
+                                    />
+                                </div>
+
+                                <Button
+                                    className="w-full bg-blue-600 hover:bg-blue-700 h-12 text-lg"
+                                    onClick={handleSavePackage}
+                                    disabled={!isConnected}
+                                >
+                                    Send Gift 🎁
+                                </Button>
+
+                                <div className="text-center">
+                                    <Button variant="link" className="text-blue-600 hover:underline">
+                                        Learn More
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
                     )}
                 </div>
-            </CardFooter>
-        </Card>
-    )
+            </main>
+
+            {/* Footer */}
+            <footer className="py-4 text-center text-sm text-gray-500">
+                Built by BGB Community
+            </footer>
+        </div>
+    );
 }
 
-export default GiftModal 
+export default GiftModal;
+
