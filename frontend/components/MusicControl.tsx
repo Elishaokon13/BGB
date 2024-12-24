@@ -4,7 +4,7 @@ import { useSound } from "@/hooks/useSound";
 import { useEffect } from "react";
 
 export function MusicControl() {
-  const { isMusicPlaying, toggleMusic, hasInteracted } = useSound();
+  const { isMusicPlaying, toggleMusic, hasInteracted, playBell } = useSound();
 
   useEffect(() => {
     const handleFirstClick = () => {
@@ -15,10 +15,18 @@ export function MusicControl() {
 
     document.addEventListener("click", handleFirstClick, { once: true });
 
+    // Add global click handler for bell sound
+    const handleClick = () => {
+      playBell();
+    };
+
+    document.addEventListener("click", handleClick);
+
     return () => {
       document.removeEventListener("click", handleFirstClick);
+      document.removeEventListener("click", handleClick);
     };
-  }, [hasInteracted, toggleMusic]);
+  }, [hasInteracted, toggleMusic, playBell]);
 
   return (
     <button
