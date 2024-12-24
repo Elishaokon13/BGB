@@ -3,7 +3,6 @@ import USDC from "../public/usdc.svg";
 import BASENAME from "../public/basename.svg";
 import CUBE from "../public/cube.svg";
 import Image from "next/image";
-import VideoBackground from "./VideoBackground";
 
 export const Welcome = () => {
   return (
@@ -68,7 +67,7 @@ export const Welcome = () => {
         <h1 className="text-[23.19px] font-bold">Welcome to Base! 🎉</h1>
         <p>Congratulations on Receiving Your First Holiday Gift!</p>
         <p className="mt-7">
-          You've Just Joined The Base Ecosystem, a Community-Driven Platform
+          You&apos;ve Just Joined The Base Ecosystem, a Community-Driven Platform
           Where Your Yourney Into The World of Decentralized Finance Begins.
         </p>
       </div>

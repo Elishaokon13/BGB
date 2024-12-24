@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
-import Gift from "../public/gif/animated-gift.gif";
-import Image from "next/image";
 
 //this is where the receiver need to have a wallet address before they are allowed to claim the package
 const Claim = () => {
@@ -70,23 +68,23 @@ const Claim = () => {
     }
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="flex min-h-screen items-center justify-center">
-  //       <div className="flex flex-col items-center gap-4">
-  //         <p className="text-muted-foreground">Loading package details...</p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-muted-foreground">Loading package details...</p>
+        </div>
+      </div>
+    );
+  }
 
-  // if (error) {
-  //   return (
-  //     <div className="flex min-h-screen items-center justify-center p-4">
-  //       <p>{error}</p>
-  //     </div>
-  //   );
-  // }
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-4">
+        <p>{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
