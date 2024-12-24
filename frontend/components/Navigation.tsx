@@ -8,18 +8,22 @@ import {
 } from '@coinbase/onchainkit/wallet';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Navigation() {
     return (
-        <nav className="flex justify-between items-center p-4">
+        <nav className="flex justify-between items-center p-4 bg-transparent">
             {/* Left side - Logo */}
             <div className="flex items-center">
+                <Link href={"/"}>
+                
                 <Image
                     src="/base_xmas.svg"
                     alt="Base Christmas Logo"
                     width={40}
                     height={40}
                 />
+                </Link>
             </div>
 
             {/* Right side - Wallet Connect and Identity */}
