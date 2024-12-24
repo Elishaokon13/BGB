@@ -91,29 +91,35 @@ const Claim = () => {
       <div className="w-full max-w-md">
         <div className="flex flex-col gap-4">
           <div>
-            <div className="flex flex-col gap-4">
-              <button
-                onClick={handleClaim}
-                disabled={isClaiming}
-                className="w-full relative"
-              >
-                {isClaiming ? (
-                  "Claiming"
-                ) : (
-                  <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 max-w-xl object-cover z-[-1]"
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+                <button
+                  onClick={handleClaim}
+                  disabled={isClaiming}
+                  className="w-full h-full relative flex items-center justify-center"
                 >
-                  <source src="/videos/animated-gift.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                )}
-              </button>
+                  {isClaiming ? (
+                    <span className="text-white">Claiming...</span>
+                  ) : (
+                    <>
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                        poster="/images/gift-placeholder.png" // Optional: Add a placeholder image
+                      >
+                        <source src="/video/animated-gift.mp4" type="video/mp4" />
+                      </video>
+                      {/* Optional overlay for better button visibility */}
+                      <div className="absolute inset-0 bg-black/10 hover:bg-black/20 transition-colors" />
+                    </>
+                  )}
+                </button>
+              </div>
 
-              <p className="text-3xl text-black font-[500] text-muted-foreground">
+              <p className="text-3xl text-center text-black font-[500] text-muted-foreground">
                 Click to Claim Your Package
               </p>
             </div>
