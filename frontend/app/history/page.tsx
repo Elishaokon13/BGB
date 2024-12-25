@@ -1,5 +1,6 @@
 // import { HistoryView } from "@/views/history";
-import { HistoryTable } from "@/views/history/components/history-table/HistoryTableContent";
+
+import { HistoryTable } from "@/components/History";
 
 export default function HistoryPage() {
   return (
