@@ -14,16 +14,30 @@ function Navigation() {
     return (
         <nav className="flex justify-between items-center p-4 bg-transparent">
             {/* Left side - Logo */}
-            <div className="flex items-center">
-                <Link href={"/"}>
-                
-                <Image
-                    src="/base_xmas.svg"
-                    alt="Base Christmas Logo"
-                    width={40}
-                    height={40}
-                />
+            <div className="flex rounded-full px-2 py-2 border-spacing-6 items-center">
+                <Link href={"/"} className='mr-2'>
+
+                    <Image
+                        src="/base_xmas.svg"
+                        alt="Base Christmas Logo"
+                        width={40}
+                        height={40}
+                    />
                 </Link>
+                <div className="flex rounded-md px-1 py-1 border-spacing-6 border border-gray-600 gap-2">
+                    {/* <Image
+                        src="/base_img.png"
+                        alt="Logo"
+                        width={32}
+                        height={32}
+                        className="rounded-full"
+                    /> */}
+                    <div className="flex items-center gap-2 text-sm">
+                        <span className="w-2 h-2 animate-pulse rounded-full bg-green-500"></span>
+                        Gas Fee
+                        <span className="font-extrabold">0.000 ETH</span>
+                    </div>
+                </div>
             </div>
 
             {/* Right side - Wallet Connect and Identity */}
