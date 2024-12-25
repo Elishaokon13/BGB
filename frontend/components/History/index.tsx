@@ -2,9 +2,9 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { StatsRow } from "../Stats";
-import { columns } from './columns';
-import { DataTable } from './data-table';
+import { StatsRow } from "./Stats";
+import { columns } from "./table/columns";
+import { DataTable } from "./table/data-table";
 
 const history = [
   {
@@ -26,7 +26,8 @@ const history = [
   {
     id: 3,
     recipient: "Charlie Brown",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+    details:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     status: "Claimed",
     date: 1734968758,
     actions: "View",
